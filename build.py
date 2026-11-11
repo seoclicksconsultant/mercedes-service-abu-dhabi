@@ -30,6 +30,8 @@ for page in sorted((SRC / "pages").glob("*.html")):
         "DESC": meta["desc"],
         "PRELOAD": meta.get("preload", ""),
         "SCHEMA": meta.get("schema", ""),
+        "EXTRA_HEAD": "\n".join(f'<link rel="stylesheet" href="{{{{ROOT}}}}{h}">' for h in meta.get("styles", [])),
+        "EXTRA_BODY": "\n".join(f'<script src="{{{{ROOT}}}}{j}" defer></script>' for j in meta.get("scripts", [])),
     }
     for k, v in reps.items():
         html = html.replace("{{" + k + "}}", v)

@@ -610,3 +610,16 @@ strong { color: var(--obsidian); font-weight: 600; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Cursor ---------- */
+@media (pointer: fine) {
+  .cursor { position: fixed; left: 0; top: 0; z-index: 300; width: 36px; height: 36px; margin: -18px 0 0 -18px; border-radius: 50%; border: 1.5px solid rgb(0 120 214 / .6); pointer-events: none; opacity: 0; transition: opacity .3s, width .3s var(--ease), height .3s var(--ease), margin .3s var(--ease), background .3s, border-color .3s; mix-blend-mode: multiply; }
+  .cursor.is-hover { width: 64px; height: 64px; margin: -32px 0 0 -32px; background: rgb(0 120 214 / .12); border-color: transparent; }
+}
+
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+.cursor.is-on { opacity: 1; }

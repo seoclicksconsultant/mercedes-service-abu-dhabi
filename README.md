@@ -54,7 +54,7 @@ All images are WebP in `assets/img/`. Car cutouts (transparent background) were 
 | mercedes-star.webp | https://unsplash.com/photos/mercedes-benz-emblem-gs3duh5iqkw |
 | amg-gt-monaco.webp | https://unsplash.com/photos/matte-black-mercedes-amg-gt-in-monaco-MaraDXSaTho |
 
-`favicon.webp` is the Exotic Auto Services favicon from exoticautoservices.ae.
+`favicon.svg` and `apple-touch-icon.webp` are the site's own mark (not the Exotic logo).
 
 ## Still to confirm with the client
 
