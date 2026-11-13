@@ -18,6 +18,9 @@ import luxe_gen  # noqa: E402
 
 luxe_gen.build()
 
+SITE = "https://seoclicksconsultant.github.io/mercedes-service-abu-dhabi/"  # live URL (change when a custom domain is added)
+BUILT = []
+
 partials = {p.stem: p.read_text(encoding="utf-8") for p in (SRC / "partials").glob("*.html")}
 
 def assemble(meta, body):
@@ -26,6 +29,8 @@ def assemble(meta, body):
     root = "../" * depth or "./"
     html = partials["head"] + partials["header"] + body + partials["footer"] + "</body>\n</html>\n"
     reps = {
+        "CANONICAL": SITE + str(out).replace("index.html", ""),
+        "SITE": SITE,
         "TITLE": meta["title"],
         "DESC": meta["desc"],
         "PRELOAD": meta.get("preload", ""),
@@ -42,6 +47,7 @@ def assemble(meta, body):
     dest = ROOT / out
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(html, encoding="utf-8")
+    BUILT.append(str(out).replace("index.html", ""))
     print("built", out)
 
 for page in sorted((SRC / "pages").glob("*.html")):
@@ -53,3 +59,9 @@ for page in sorted((SRC / "pages").glob("*.html")):
 
 for meta, body in services_build.render_all():
     assemble(meta, body)
+
+# sitemap for search engines (submit SITE + "sitemap.xml" in Google Search Console)
+from datetime import date
+urls = "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{date.today()}</lastmod></url>\n" for u in sorted(BUILT, key=lambda u: (u != "", u)))
+(ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n", encoding="utf-8")
+print("built sitemap.xml")

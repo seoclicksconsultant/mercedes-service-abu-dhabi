@@ -133,7 +133,7 @@ The right fix depends on how much paint is damaged. This is how we help you choo
 
 5. ### **Finish:** 
 
-   We polish, inspect under daylight lamps and refit all trim. You get your car back with a paint report and warranty card.
+   We polish, inspect under daylight lamps and refit all trim. You get your car back with a paint report.
 
 ## **Why Choose Us for Mercedes Painting**
 
@@ -143,7 +143,7 @@ The right fix depends on how much paint is damaged. This is how we help you choo
 
 * ### **Approved paint system:** 
 
-  We use **\[paint brand\]**, a refinish system built to Mercedes quality standards.
+  We use a professional refinish system built to Mercedes quality standards, applied in our sealed paint booth.
 
 * ### **Clear coat care:** 
 
@@ -157,9 +157,9 @@ The right fix depends on how much paint is damaged. This is how we help you choo
 
   We blend colour into nearby panels, so repaired areas never stand out.
 
-* ### **Paint warranty:** 
+* ### **Ceramic protection warranty:** 
 
-  Every paint job comes with a \[**X**\]-year warranty against peeling, fading and defects.
+  Add Onyx ceramic coating after your paint job, with packages carrying 3, 5 or 7-year warranties.
 
 ## **Frequently Asked Questions**
 
@@ -189,7 +189,7 @@ Never polish or wax matte paint, and avoid automatic car washes. Hand wash it wi
 
 ### **Is there a warranty on paintwork?** 
 
-Yes. All our paintwork carries a \[**X**\]-year warranty against peeling, fading and defects.
+Ask us for the warranty terms on your paint job before work starts. If you protect the new finish with ceramic coating, our Onyx packages carry 3, 5 or 7-year warranties.
 
 ## **Book Your Mercedes Painting in Abu Dhabi**
 

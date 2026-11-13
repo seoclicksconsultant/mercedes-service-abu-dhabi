@@ -156,9 +156,9 @@ Every engine job follows the same five steps, so you always know what is happeni
 
   You get a line-by-line quote, and we call you before doing any extra work.
 
-* ### **Warranty:** 
+* ### **Price guarantee:** 
 
-  Every engine repair comes with a \[**X**\]-month warranty covering both parts and labour.
+  Save up to 35% on various services, without cutting corners on parts or workmanship.
 
 ## **Frequently Asked Questions**
 
@@ -188,7 +188,7 @@ Yes. We offer genuine Mercedes-Benz parts or OE-quality parts from the same supp
 
 ### **Is there a warranty on engine work?** 
 
-Yes. All engine repairs carry a \[**X**\]-month warranty on parts and labour.
+Ask us about the warranty on your specific repair before work starts. Every invoice lists the parts and part numbers fitted, which keeps your service history documented and protects your warranty position and resale value.
 
 ### **Book Your Mercedes Engine Repair in Abu Dhabi**
 

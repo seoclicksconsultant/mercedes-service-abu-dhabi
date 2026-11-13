@@ -91,9 +91,15 @@ Service-page images (Unsplash License; Unsplash photo id in brackets, open as `h
 
 `favicon.svg` and `apple-touch-icon.webp` are the site's own mark (not the Exotic logo).
 
-## Still to confirm with the client
+## Live site
 
-- Warranty length: the copy still reads `[X]-month` in two places on the home page (buyer's checklist table and "Warranty on Our Work") and on the engine repair page (why choose us + FAQ). The painting page reads `[X]-year`. Exotic's site does not state a warranty period.
-- Painting page: `[paint brand]` (the refinish paint system used) still needs the real brand name.
-- Diagnostics page: the copy had an editor note to add the diagnostic fee (or say it is credited against the repair). The note is hidden; the page says "We confirm the diagnostic fee before we start." Add the fee to `_src/services/mercedes-diagnostics.md` if wanted.
-- Final domain: add `<link rel="canonical">` and absolute `og:image` URLs once the live domain is known.
+Hosted on GitHub Pages from the `main` branch: https://seoclicksconsultant.github.io/mercedes-service-abu-dhabi/
+
+- Pages are `index, follow`, each with a canonical URL and absolute `og:url` / `og:image`. The base URL is `SITE` at the top of `build.py`; change it there if a custom domain is added, then rebuild.
+- `sitemap.xml` is written on every build. Submit it in Google Search Console.
+
+## Facts taken from exoticautoservices.ae
+
+The Exotic site does not state a repair-warranty period or a refinish paint brand, so neither is claimed here. The placeholders were replaced with what the site does state: the "Price Guarantee" (up to 35% off various services), Onyx ceramic coating warranties of 3, 5 and 7 years, and a documented service history protecting the owner's warranty position. If the client confirms a repair warranty period, add it to `_src/services/mercedes-engine-repair.md`, `_src/services/mercedes-painting.md` and the home page.
+
+The diagnostics copy had an editor note asking for the diagnostic fee. The note is hidden; the page says "We confirm the diagnostic fee before we start."
