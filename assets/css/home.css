@@ -302,3 +302,50 @@ html.no-loader .loader { display: none; }
 
 .xhero__ctas { align-items: center; }
 .magnetic { transition: translate .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease), background .3s; }
+
+/* links to the dedicated service pages */
+.sv__more { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 15px; font-weight: 500; color: var(--accent); transition: gap .3s var(--ease); }
+.sv__more svg { width: 16px; height: 16px; }
+.sv__more:hover { gap: 12px; }
+
+
+/* ---------- Reviews: 3D coverflow ---------- */
+.rflow { position: relative; overflow: clip; padding-block: 10px 0; }
+.rflow__stage { position: relative; height: var(--rh, 380px); perspective: 1500px; transform-style: preserve-3d; }
+.rflow .review {
+  position: absolute; left: 50%; top: 20px; width: min(470px, 84vw); margin: 0 0 0 calc(min(470px, 84vw) / -2);
+  transition: transform 1s var(--ease), opacity .7s, filter .7s, border-color .5s, box-shadow .5s; cursor: pointer; will-change: transform;
+  background: linear-gradient(160deg, rgb(255 255 255 / .08), rgb(255 255 255 / .015) 60%), #0e1014; border: 1px solid rgb(255 255 255 / .1);
+}
+.rflow .review::before { content: "\201C"; position: absolute; right: 26px; top: 0; font: 700 7rem/1 Georgia, serif; color: rgb(255 255 255 / .06); pointer-events: none; }
+.rflow .review.is-active { cursor: default; border-color: rgb(26 140 255 / .55); box-shadow: 0 50px 90px -40px rgb(0 0 0 / .95), 0 0 60px -22px rgb(26 140 255 / .8); }
+.rflow .review:not(.is-active) { filter: brightness(.55) saturate(.7); }
+.rflow .review p { color: #d6dae0; }
+.rflow__ui { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 8px; }
+.rflow__b { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; color: #fff; background: rgb(255 255 255 / .04); border: 1px solid rgb(255 255 255 / .16); transition: background .3s, color .3s; }
+.rflow__b:hover { background: #fff; color: #0b0d11; }
+.rflow__b svg { width: 20px; height: 20px; }
+.rflow__b:first-child svg { transform: rotate(180deg); }
+.rflow__dots { display: flex; gap: 8px; }
+.rflow__dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; cursor: pointer; background: rgb(255 255 255 / .22); transition: width .4s var(--ease), background .4s; }
+.rflow__dots button[aria-current="true"] { width: 30px; background: var(--accent); }
+
+/* ---------- Hero trust strip ---------- */
+.xhero__trust { margin-top: 22px; max-width: 600px; }
+.xhero .chip--b, .xhero__scroll { display: none; }
+
+/* ---------- Phones: everything important on the first screen ---------- */
+@media (max-width: 760px) {
+  .xhero { min-height: 0; }
+  .xhero__inner { padding-top: 16px; padding-bottom: 20px; }
+  .xhero .hero__badge { margin-bottom: 12px; font-size: 12px; }
+  .xhero__title { font-size: clamp(1.85rem, 8.4vw, 2.4rem); margin-bottom: 10px; }
+  .xhero__lead { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 14px; line-height: 1.55; }
+  .xhero__ctas .btn { flex: 1 1 100%; min-height: 48px; }
+  .xhero__ctas .btn:not(:first-child) { display: none; }
+  .xhero__trust { margin-top: 12px; }
+  .xhero__stage { position: absolute; right: -22%; top: 0; width: 96%; margin: 0; opacity: .32; z-index: 0; pointer-events: none; }
+  .xhero__stage .chip, .xhero__word, .xhero__reflect { display: none; }
+  .xhero__inner { z-index: 2; }
+  .xhero__copy { position: relative; }
+}

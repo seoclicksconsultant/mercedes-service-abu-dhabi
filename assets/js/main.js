@@ -22,11 +22,24 @@
       a.addEventListener('click', e => {
         const id = a.getAttribute('href').replace('./', '');
         const el = id.length > 1 && document.querySelector(id);
-        if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: -90 }); }
+        if (el) { e.preventDefault(); lenis.scrollTo(el, { offset: document.querySelector('.subnav') ? -136 : -90 }); }
       });
     });
   }
   window.__lenis = lenis;
+
+  // ---------- Services dropdown (click / touch / keyboard) ----------
+  document.querySelectorAll('.nav-dd').forEach(dd => {
+    const btn = dd.querySelector('button');
+    btn.addEventListener('click', () => {
+      const open = !dd.classList.contains('is-open');
+      dd.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    dd.addEventListener('mouseleave', () => { dd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); });
+    dd.addEventListener('keydown', e => { if (e.key === 'Escape') { dd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); document.activeElement && document.activeElement.blur(); } });
+    document.addEventListener('click', e => { if (!dd.contains(e.target)) { dd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); } });
+  });
 
   // ---------- Mobile drawer ----------
   const drawer = document.getElementById('drawer');
@@ -66,7 +79,7 @@
   }
 
   // ---------- Spotlight glow follows pointer ----------
-  document.querySelectorAll('.svc, .why2 .card').forEach(card => {
+  document.querySelectorAll('.svc, .why2 .card, .sitem').forEach(card => {
     card.addEventListener('pointermove', e => {
       const r = card.getBoundingClientRect();
       card.style.setProperty('--mx', `${e.clientX - r.left}px`);
@@ -140,13 +153,52 @@
   });
 
   // ---------- Inner pages: GSAP reveals ----------
-  if (!reduce && window.gsap && window.ScrollTrigger && !document.querySelector('.xhero')) {
+  if (!reduce && window.gsap && window.ScrollTrigger && !document.querySelector('.xhero') && !document.querySelector('.shero')) {
     gsap.utils.toArray('.page-hero h1, .page-hero p, .page-hero .btn-row').forEach((el, i) => {
       gsap.from(el, { y: 40, opacity: 0, duration: 1, delay: .1 + i * .1, ease: 'power3.out' });
     });
     const car = document.querySelector('.page-hero__car');
     if (car) gsap.from(car, { x: 200, opacity: 0, duration: 1.4, ease: 'power3.out', delay: .2 });
   }
+
+  // ---------- Reviews: 3D coverflow ----------
+  document.querySelectorAll('[data-rflow]').forEach(box => {
+    const stage = box.querySelector('.rflow__stage');
+    const cards = [...stage.children];
+    const dots = [...box.querySelectorAll('.rflow__dots button')];
+    const n = cards.length;
+    let idx = 0, hover = false, seen = false;
+    const go = i => {
+      idx = (i % n + n) % n;
+      cards.forEach((c, k) => {
+        let o = k - idx;
+        if (o > n / 2) o -= n;
+        if (o < -n / 2) o += n;
+        const a = Math.abs(o);
+        c.style.transform = `translateX(${o * 62}%) translateZ(${-a * 180}px) rotateY(${-o * 32}deg)`;
+        c.style.opacity = a > 2 ? '0' : String(1 - a * .18);
+        c.style.zIndex = String(10 - a);
+        c.style.pointerEvents = a > 2 ? 'none' : '';
+        c.classList.toggle('is-active', o === 0);
+        c.setAttribute('aria-hidden', o === 0 ? 'false' : 'true');
+      });
+      dots.forEach((d, k) => d.setAttribute('aria-current', String(k === idx)));
+    };
+    const size = () => { box.style.setProperty('--rh', Math.max(...cards.map(c => c.offsetHeight)) + 40 + 'px'); };
+    cards.forEach((c, k) => c.addEventListener('click', () => go(k)));
+    dots.forEach((d, k) => d.addEventListener('click', () => go(k)));
+    box.querySelectorAll('[data-rf]').forEach(b => b.addEventListener('click', () => go(idx + +b.dataset.rf)));
+    let x0 = null;
+    stage.addEventListener('pointerdown', e => { x0 = e.clientX; });
+    stage.addEventListener('pointerup', e => { if (x0 !== null && Math.abs(e.clientX - x0) > 40) go(idx + (e.clientX < x0 ? 1 : -1)); x0 = null; });
+    box.addEventListener('pointerenter', () => { hover = true; });
+    box.addEventListener('pointerleave', () => { hover = false; });
+    size(); go(0); addEventListener('resize', size);
+    if (!reduce && 'IntersectionObserver' in window) {
+      new IntersectionObserver(es => { seen = es[0].isIntersecting; }, { threshold: .3 }).observe(box);
+      setInterval(() => { if (seen && !hover && !document.hidden) go(idx + 1); }, 5000);
+    }
+  });
 
   document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 })();

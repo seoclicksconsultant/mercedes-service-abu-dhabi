@@ -623,3 +623,80 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
 .cursor.is-on { opacity: 1; }
+
+/* ---------- Services dropdown (header) ---------- */
+.nav-dd { position: relative; }
+.nav-dd > button { display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; border-radius: 999px; font: 500 15px/1.7 "Poppins", sans-serif; color: var(--graphite); background: none; border: 0; cursor: pointer; transition: background .25s, color .25s; }
+.nav-dd > button svg { width: 14px; height: 14px; transition: transform .3s var(--ease); }
+.nav-dd:hover > button, .nav-dd:focus-within > button, .nav-dd > button[aria-current="page"] { background: var(--paper); color: var(--obsidian); }
+.nav-dd > button[aria-current="page"] { background: var(--alpine); }
+.nav-dd__panel {
+  position: absolute; left: 50%; top: calc(100% + 12px); width: min(760px, 92vw); padding: 14px; border-radius: 22px;
+  background: rgb(255 255 255 / .96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--line); box-shadow: var(--shadow-l);
+  opacity: 0; visibility: hidden; transform: translate(-50%, 8px); transition: opacity .25s, transform .35s var(--ease), visibility .25s;
+}
+.nav-dd__panel::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; }
+.nav-dd:hover .nav-dd__panel, .nav-dd:focus-within .nav-dd__panel, .nav-dd.is-open .nav-dd__panel { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-dd:hover > button svg, .nav-dd:focus-within > button svg { transform: rotate(180deg); }
+.nav-dd__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.nav-dd__grid a { display: flex; gap: 12px; align-items: flex-start; padding: 12px; border-radius: 14px; transition: background .2s; }
+.nav-dd__grid a:hover, .nav-dd__grid a:focus-visible { background: var(--paper); }
+.nav-dd__ic { width: 38px; height: 38px; border-radius: 11px; flex: none; display: grid; place-items: center; background: var(--obsidian); color: #fff; transition: background .25s, transform .4s var(--ease); }
+.nav-dd__grid a:hover .nav-dd__ic { background: var(--accent); transform: rotate(-8deg); }
+.nav-dd__ic svg { width: 19px; height: 19px; }
+.nav-dd__grid b { display: block; font-size: 14.5px; font-weight: 600; color: var(--obsidian); line-height: 1.3; }
+.nav-dd__grid small { display: block; font-size: 12.5px; color: var(--selenite); line-height: 1.4; margin-top: 2px; }
+.nav-dd__foot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 8px; padding: 12px 12px 4px; border-top: 1px solid var(--line); font-size: 13px; color: var(--selenite); }
+.nav-dd__foot a { color: var(--accent); font-weight: 500; }
+.drawer__dd { margin: 0; }
+.drawer__dd summary { list-style: none; cursor: pointer; padding: 14px 16px; border-radius: 12px; font-size: 18px; font-weight: 500; color: var(--obsidian); display: flex; justify-content: space-between; align-items: center; }
+.drawer__dd summary::-webkit-details-marker { display: none; }
+.drawer__dd summary::after { content: "+"; font-size: 22px; color: var(--selenite); transition: transform .3s var(--ease); }
+.drawer__dd[open] summary::after { transform: rotate(45deg); }
+.drawer__dd div { display: grid; padding: 0 0 8px 12px; }
+.drawer__dd div a { padding: 9px 16px !important; font-size: 15px !important; color: var(--graphite) !important; border-left: 1px solid var(--line); border-radius: 0 10px 10px 0 !important; }
+.drawer { overflow-y: auto; }
+
+/* ---------- Hero trust strip + rating (home + service pages) ---------- */
+.trust { list-style: none; margin: 0; padding: 0; max-width: 600px; display: grid; grid-template-columns: repeat(4, 1fr); border-radius: 18px; overflow: hidden; border: 1px solid rgb(255 255 255 / .1); background: rgb(255 255 255 / .035); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.trust li { position: relative; display: grid; justify-items: center; text-align: center; gap: 1px; padding: 13px 6px 12px; }
+.trust li + li::before { content: ""; position: absolute; left: 0; top: 22%; bottom: 22%; width: 1px; background: rgb(255 255 255 / .1); }
+.trust svg { width: 20px; height: 20px; color: #9fd2ff; margin-bottom: 5px; }
+.trust b { font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: #fff; line-height: 1.2; }
+.trust span { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: #969da8; line-height: 1.3; }
+.rate { max-width: 600px; display: flex; align-items: center; gap: 12px; margin-top: 10px; padding: 9px 14px; border-radius: 16px; border: 1px solid rgb(255 255 255 / .1); background: rgb(255 255 255 / .035); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.rate__avs { display: flex; flex: none; }
+.rate__avs i { width: 30px; height: 30px; margin-left: -9px; border-radius: 50%; display: grid; place-items: center; font: 600 12px/1 Poppins, sans-serif; font-style: normal; color: #fff; background: linear-gradient(135deg, #4a5262, #1b1f26); border: 2px solid #0b0d11; }
+.rate__avs i:first-child { margin-left: 0; }
+.rate__avs i.k { background: #1a8cff; font-size: 10px; }
+.rate__txt { flex: 1; font-size: 13px; line-height: 1.35; color: #c3c8cf; }
+.rate__txt b { color: #fff; }
+.rate__g { display: flex; align-items: center; gap: 6px; padding-left: 12px; border-left: 1px solid rgb(255 255 255 / .12); flex-wrap: wrap; row-gap: 0; }
+.rate__g b { font-size: 20px; color: #fff; line-height: 1; }
+.rate__stars { color: #f5a524; font-size: 12px; letter-spacing: 1px; }
+.rate__g small { font-size: 11px; color: #969da8; }
+.glogo { width: 18px; height: 18px; }
+@media (max-width: 760px) {
+  .trust li { padding: 10px 2px; }
+  .trust svg { width: 18px; height: 18px; margin-bottom: 3px; }
+  .trust b { font-size: 11.5px; }
+  .trust span { font-size: 9.5px; letter-spacing: .04em; }
+  .rate { gap: 8px; padding: 8px 10px; }
+  .rate__avs i { width: 26px; height: 26px; font-size: 11px; }
+  .rate__txt { font-size: 12px; white-space: nowrap; }
+  .rate__g { flex-wrap: nowrap; }
+  .rate__g b { font-size: 17px; }
+  .rate__g small { display: none; }
+  .rate { overflow: hidden; }
+  .rate__avs i:nth-child(3) { display: none; }
+  .rate__stars { letter-spacing: 0; font-size: 11px; }
+}
+
+/* compact chrome on phones: the bottom bar carries call + WhatsApp */
+@media (max-width: 680px) {
+  .topbar { display: none; }
+  .header .container { min-height: 64px; }
+  .brand__mark { width: 38px; height: 38px; }
+  .brand__name { font-size: 16px; }
+}

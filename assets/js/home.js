@@ -31,14 +31,14 @@
       const T = window.THREE;
       const renderer = new T.WebGLRenderer({ canvas, antialias: true, alpha: true });
       renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-      renderer.setClearColor(0xffffff, 0);
+      renderer.setClearColor(0x08090b, 0);
       const scene = new T.Scene();
-      scene.fog = new T.Fog(0xffffff, 12, 70);
+      scene.fog = new T.Fog(0x08090b, 12, 70);
       const camera = new T.PerspectiveCamera(55, 1, 0.1, 200);
       camera.position.set(0, 2.4, 9);
 
       // Floor grid that scrolls toward the camera
-      const grid = new T.GridHelper(240, 120, 0xd3dae3, 0xedf0f4);
+      const grid = new T.GridHelper(240, 120, 0x2a313b, 0x15181e);
       grid.position.y = 0;
       scene.add(grid);
 
@@ -69,7 +69,7 @@
       // Wireframe rings (abstract wheel / turbine) floating in the distance
       const ring = new T.Mesh(new T.TorusGeometry(6, 0.04, 8, 120), new T.MeshBasicMaterial({ color: 0x0078d6, transparent: true, opacity: .35 }));
       ring.position.set(9, 6, -26); scene.add(ring);
-      const ring2 = new T.Mesh(new T.TorusGeometry(4.2, 0.03, 8, 100), new T.MeshBasicMaterial({ color: 0x0b0d11, transparent: true, opacity: .2 }));
+      const ring2 = new T.Mesh(new T.TorusGeometry(4.2, 0.03, 8, 100), new T.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: .12 }));
       ring2.position.set(9, 6, -26); scene.add(ring2);
 
       let mx = 0, my = 0, visible = true;
